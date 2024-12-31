@@ -1,6 +1,6 @@
 import random
 import numpy as np
-import plotext as plt
+from uniplot import plot
 
 def generate_data(n_days=100, seed=42):
     """Generate synthetic tea orders based on temperature.
@@ -33,16 +33,23 @@ def main():
     temps, orders = generate_data()
     # Fit line
     m, b = fit_line(temps, orders)
+    # Create points for regression line
     x_line = [min(temps), max(temps)]
     y_line = [m * x + b for x in x_line]
-    # Plot
-    plt.clf()
-    plt.scatter(temps, orders)
-    plt.plot(x_line, y_line)
-    plt.title("Iced Tea Orders vs Temperature")
-    plt.xlabel("Temperature (°C)")
-    plt.ylabel("Daily Orders")
-    plt.show()
+    # Plot scatter
+    print("\nTemperature vs Tea Orders:")
+    print("X-axis: Temperature (°C)")
+    print("Y-axis: Tea Orders")
+    plot(
+        xs=temps,
+        ys=orders,
+    )
+    # Plot regression line
+    plot(
+        xs=x_line,
+        ys=y_line,
+        lines=[(0,1)],  # Draw line between first and second point
+    )
     print(f"\nRegression line: Orders = {m:.1f} * Temperature + {b:.1f}")
 
 if __name__ == "__main__":

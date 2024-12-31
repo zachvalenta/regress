@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "regression"
+version = "0.1.0"
+description = ""
+authors = ["zachvalenta <zjv5002@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+plotext = "^5.3.2"
+numpy = "^2.2.1"
+uniplot = "^0.16.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
